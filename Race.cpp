@@ -28,7 +28,7 @@ void main()
   int driver,mode;
   driver = DETECT;
   initgraph(&driver,&mode,"C:\\TurboC3\\BGI");
-  int x=300,y=350,ch,life=3,score=0;
+  int x=150,y=350,ch,life=3,score=0;
   int level=1;
   char choice;
   for(int m=1;m<25;m++)
@@ -37,22 +37,19 @@ void main()
 		cout<<" ";
 		}
   setcolor(RED);
-  rectangle(20,60,200,120);
-
+  rectangle(0,60,200,120);
   gotoxy(5,21);
-
-  rectangle(249,0,401,getmaxy());
+  rectangle(150,0,401,getmaxy());
   setfillstyle(SOLID_FILL,8);
   floodfill(325,getmaxy()/2,RED);
   setcolor(RED);
   rectangle(20,200,200,250);
-  gotoxy(5,15);
-  cout<<"Press <Esc> to Exit";
-
+  gotoxy(2,15);
+  cout<<"<Esc> -> Exit";
   {
 	if(level==1){
 	  gotoxy(5,5);
-	  cout<<"Your War Starts Now";
+	  cout<<"Starts Now";
 	  gotoxy(5,7);
 	  cout<<"All the best";
 	  delay(5000);

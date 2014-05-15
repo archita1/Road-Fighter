@@ -40,7 +40,7 @@ void main()
   rectangle(0,60,120,120);
   gotoxy(5,21);
   rectangle(150,0,401,getmaxy());
-  setfillstyle(SOLID_FILL,8);
+  setfillstyle(SOLID_FILL,0);
   floodfill(325,getmaxy()/2,RED);
   setcolor(RED);
   rectangle(0,200,120,250);
@@ -58,13 +58,62 @@ void main()
 	  cout<<"          ";
 	  gotoxy(2,7);
 	  cout<<"            ";
-	  rectangle(200,0,401,getmaxy());
+	  rectangle(150,0,401,getmaxy());
 	  setfillstyle(SOLID_FILL,8);
 	  floodfill(325,getmaxy()/2,RED);
-	  setcolor(RED);
+      setcolor(RED);
 	  }
+	 else
+	 if(level==2){
+	     gotoxy(2,5);
+	     cout<<"Level 2.";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+	     setcolor(RED);
+		 rectangle(351,0,401,getmaxy());
+		 setfillstyle(SOLID_FILL,BLACK);
+		 floodfill(360,getmaxy()/2,BLACK);
+		 setcolor(RED);
+		 rectangle(150,0,350,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(340,getmaxy()/2,RED);
+
+	     }
+	 else
+	 if(level==3){
+	     gotoxy(2,5);
+	     cout<<"Level 3.";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+		 setcolor(RED);
+		 rectangle(301,0,351,getmaxy());
+		 setfillstyle(SOLID_FILL,BLACK);
+		 floodfill(320,getmaxy()/2,BLACK);
+		 setcolor(RED);
+		 rectangle(150,0,300,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(240,getmaxy()/2,RED);
+	     }
+     else
+	 if(level==4){
+	     gotoxy(2,5);
+	     cout<<"Level 4.";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+         setcolor(RED);
+		 rectangle(251,0,301,getmaxy());
+		 setfillstyle(SOLID_FILL,BLACK);
+		 floodfill(260,getmaxy()/2,BLACK);
+		 setcolor(RED);
+		 rectangle(150,0,250,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(240,getmaxy()/2,RED);
+	     }
   for(int i=0;(i<3)&&(life>0);i++) {
-	if((level==4)&&(i==14)){
+	if((level==4)&&(i==3)){
 	   gotoxy(2,5);
 	   cout<<"You have won";
 	   gotoxy(2,6);
@@ -86,12 +135,21 @@ void main()
 	gotoxy(55,24);
 	cout<<"Score = "<<score;
 	int accident=0;
-	int y1=1,x1=150+((rand()%5)*50);
-	int y2=1,x2=150+((rand()%5)*50);
-	int y3=1,x3=150+((rand()%5)*50);
-	int y4=1,x4=150+((rand()%5)*50);
+	int y1=1,x1=150+((rand()%(6-level))*50);
+	int y2=1,x2=150+((rand()%(6-level))*50);
+	int y3=1,x3=150+((rand()%(6-level))*50);
+	int y4=1,x4=150+((rand()%(6-level))*50);
+
+	/*int y5=1,x5=200+((rand()%4)*50);
+	int y6=1,x6=200+((rand()%4)*50);
+	int y7=1,x7=200+((rand()%4)*50);
+
+	int y8=1,x8=250+((rand()%3)*50);
+	int y9=1,x9=250+((rand()%3)*50);
+*/
+
 	score += 10;
-	while(y1<getmaxy()-1)
+	while((y1<getmaxy()-1))// || (y5<getmaxy()-1) || (y8<getmaxy()-1))
 	{
 		if(level==1)
 		{
@@ -108,7 +166,7 @@ void main()
 		makecar(x3,y3);
 		makecar(x4,y4);
 		makecar(x,y);
-		delay(5-level);
+		delay(4-level);
 		}
 		else
 		if(level==2)
@@ -119,21 +177,13 @@ void main()
 		y1++;
 		y2++;
 		y3++;
+
 		makecar(x1,y1);
 		makecar(x2,y2);
 		makecar(x3,y3);
 		makecar(x,y);
-		delay(5-level);
-	     gotoxy(2,5);
-	     cout<<"Level 2";
-	     delay(1000);
-	     gotoxy(2,5);
-	     cout<<"           ";
-	     rectangle(250,0,301,getmaxy());
-	     setfillstyle(SOLID_FILL,8);
-	     floodfill(325,getmaxy()/2,RED);
-	     setcolor(RED);
-	     }
+		delay(4-level);
+		}
 		else
 		if(level==3)
 		{
@@ -144,34 +194,17 @@ void main()
 		makecar(x1,y1);
 		makecar(x2,y2);
 		makecar(x,y);
-		delay(5-level);
-	    gotoxy(2,5);
-	    cout<<"Level 3";
-	    delay(1000);
-	    gotoxy(2,5);
-	    cout<<"           ";
-	    rectangle(200,0,301,getmaxy());
-		setfillstyle(SOLID_FILL,8);
-		floodfill(265,getmaxy()/2,RED);
-	    setcolor(RED);
+		delay(4-level);
 		}
-        else if(level=4)
-        {
+		else
+		if(level==4)
+		{
 		clear(x1,y1);
 		y1++;
 		makecar(x1,y1);
 		makecar(x,y);
-		delay(5-level);
-	     gotoxy(2,5);
-	     cout<<"Level 4.";
-	     delay(1000);
-	     gotoxy(2,5);
-	     cout<<"           ";
-		 rectangle(250,0,401,getmaxy());
-		 setfillstyle(SOLID_FILL,8);
-		 floodfill(325,getmaxy()/2,RED);
-         setcolor(RED);
-        }
+		delay(4-level);
+		}
 		if(kbhit())
 		{
 			makecar(x,y);

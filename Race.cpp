@@ -28,7 +28,7 @@ void main()
   int driver,mode;
   driver = DETECT;
   initgraph(&driver,&mode,"C:\\TurboC3\\BGI");
-  int x=300,y=350,ch,life=3,score=0;
+  int x=150,y=350,ch,life=3,score=0;
   int level=1;
   char choice;
   for(int m=1;m<25;m++)
@@ -37,28 +37,25 @@ void main()
 		cout<<" ";
 		}
   setcolor(RED);
-  rectangle(20,60,200,120);
-
+  rectangle(0,60,120,120);
   gotoxy(5,21);
-
-  rectangle(249,0,401,getmaxy());
+  rectangle(150,0,401,getmaxy());
   setfillstyle(SOLID_FILL,8);
   floodfill(325,getmaxy()/2,RED);
   setcolor(RED);
-  rectangle(20,200,200,250);
-  gotoxy(5,15);
-  cout<<"Press <Esc> to Exit";
-
+  rectangle(0,200,120,250);
+  gotoxy(2,15);
+  cout<<"<Esc> -> Exit";
   {
 	if(level==1){
-	  gotoxy(5,5);
-	  cout<<"Your War Starts Now";
-	  gotoxy(5,7);
+	  gotoxy(2,5);
+	  cout<<"Starts Now";
+	  gotoxy(2,7);
 	  cout<<"All the best";
 	  delay(5000);
-	  gotoxy(5,5);
-	  cout<<"                    ";
-	  gotoxy(5,7);
+	  gotoxy(2,5);
+	  cout<<"          ";
+	  gotoxy(2,7);
 	  cout<<"            ";
 	  }
 	 else {
@@ -91,15 +88,23 @@ void main()
 	int accident=0;
 	int y1=1,x1=250+((rand()%3)*50);
 	int y2=1,x2=250+((rand()%3)*50);
+	int y3=1,x3=150+((rand()%5)*50);
+	int y4=1,x4=150+((rand()%5)*50);
 	score += 10;
 	while(y1<getmaxy()-1)
 	{
 		clear(x1,y1);
 		clear(x2,y2);
+		clear(x3,y3);
+		clear(x4,y4);
 		y1++;
 		y2++;
+		y3++;
+		y4++;
 		makecar(x1,y1);
 		makecar(x2,y2);
+		makecar(x3,y3);
+		makecar(x4,y4);
 		makecar(x,y);
 		delay(5-level);
 		if(kbhit())
@@ -110,7 +115,7 @@ void main()
 			case 27: exit(0);
 			break;
 			case 75:clear(x,y);
-				if(x>250)
+				if(x>150)
 					x=x-50;
 				makecar(x,y);
 			break;
@@ -134,11 +139,11 @@ void main()
 	     cout<<"GAME OVER ";
 	     break;
 	     }
-	    gotoxy(5,5);
-	    cout<<"You have lost 1 life";
+	    gotoxy(2,5);
+	    cout<<"Lost 1 life";
 	    delay(3000);
-	    gotoxy(5,5);
-	    cout<<"                    ";
+	    gotoxy(2,5);
+	    cout<<"           ";
 	    }
   }
   }

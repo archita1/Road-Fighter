@@ -27,7 +27,7 @@ void main()
  {
   int driver,mode;
   driver = DETECT;
-  initgraph(&driver,&mode,"\\tc\\bgi");
+  initgraph(&driver,&mode,"C:\\TurboC3\\BGI");
   int x=300,y=350,ch,life=3,score=0;
   int level=1;
   char choice;

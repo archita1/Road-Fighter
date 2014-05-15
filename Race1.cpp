@@ -37,40 +37,71 @@ void main()
 		cout<<" ";
 		}
   setcolor(RED);
-  rectangle(0,60,200,120);
+  rectangle(0,60,120,120);
   gotoxy(5,21);
   rectangle(150,0,401,getmaxy());
   setfillstyle(SOLID_FILL,8);
   floodfill(325,getmaxy()/2,RED);
   setcolor(RED);
-  rectangle(20,200,200,250);
+  rectangle(0,200,120,250);
   gotoxy(2,15);
   cout<<"<Esc> -> Exit";
+  for(level=1;(level<=4)&&(life>0);level++)
   {
 	if(level==1){
-	  gotoxy(5,5);
+	  gotoxy(2,5);
 	  cout<<"Starts Now";
-	  gotoxy(5,7);
+	  gotoxy(2,7);
 	  cout<<"All the best";
-	  delay(5000);
-	  gotoxy(5,5);
-	  cout<<"                    ";
-	  gotoxy(5,7);
+	  delay(1000);
+	  gotoxy(2,5);
+	  cout<<"          ";
+	  gotoxy(2,7);
 	  cout<<"            ";
+	  rectangle(200,0,401,getmaxy());
+	  setfillstyle(SOLID_FILL,8);
+	  floodfill(325,getmaxy()/2,RED);
+	  setcolor(RED);
 	  }
-	 else {
-	     gotoxy(5,5);
-	     cout<<"Next level.";
-	     delay(5000);
-	     gotoxy(5,5);
+    else if(level==2){
+	     gotoxy(2,5);
+	     cout<<"Level 2";
+	     delay(1000);
+	     gotoxy(2,5);
 	     cout<<"           ";
+	     rectangle(250,0,401,getmaxy());
+	     setfillstyle(SOLID_FILL,8);
+	     floodfill(325,getmaxy()/2,RED);
+	     setcolor(RED);
 	     }
-  for(int i=0;(i<15)&&(life>0);i++) {
-	if((level==5)&&(i==14)){
-	   gotoxy(5,5);
+	 /*else if(level==3){
+	     gotoxy(2,5);
+	     cout<<"Level 3";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+		 rectangle(300,0,401,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(325,getmaxy()/2,RED);
+	 setcolor(RED);
+	     }
+     else if(level==4){
+	     gotoxy(2,5);
+	     cout<<"Level 4.";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+		 rectangle(350,0,401,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(325,getmaxy()/2,RED);
+         setcolor(RED);
+	     }*/
+  for(int i=0;(i<3)&&(life>0);i++) {
+	if((level==4)&&(i==14)){
+	   gotoxy(2,5);
 	   cout<<"You have won";
-	   gotoxy(5,6);
-	   cout<<"Wanna continue <y/n>";
+	   gotoxy(2,6);
+	   cout<<"Continue <y/n>";
 	   cin>>choice;
 	   if ((choice=='y')||(choice=='Y'))
 		main();
@@ -78,19 +109,58 @@ void main()
 		exit(0);
 	   }
 	setcolor(RED);
-
-	rectangle(420,250,600,300);
+	rectangle(420,125,550,175);
+	gotoxy(55,10);
+	cout<<"Level = "<<level;
+	rectangle(420,250,550,300);
 	gotoxy(55,18);
 	cout<<"Lives = "<<life;
-	rectangle(420,350,600,400);
+	rectangle(420,350,550,400);
 	gotoxy(55,24);
 	cout<<"Score = "<<score;
 	int accident=0;
 	int y1=1,x1=250+((rand()%3)*50);
 	int y2=1,x2=250+((rand()%3)*50);
+	int y3=1,x3=150+((rand()%5)*50);
+	int y4=1,x4=150+((rand()%5)*50);
 	score += 10;
 	while(y1<getmaxy()-1)
 	{
+		if(level==1)
+		{
+		clear(x1,y1);
+		clear(x2,y2);
+		clear(x3,y3);
+		clear(x4,y4);
+		y1++;
+		y2++;
+		y3++;
+		y4++;
+		makecar(x1,y1);
+		makecar(x2,y2);
+		makecar(x3,y3);
+		makecar(x4,y4);
+		makecar(x,y);
+		delay(5-level);
+		}
+		else
+		if(level==2)
+		{
+		clear(x1,y1);
+		clear(x2,y2);
+		clear(x3,y3);
+		y1++;
+		y2++;
+		y3++;
+		makecar(x1,y1);
+		makecar(x2,y2);
+		makecar(x3,y3);
+		makecar(x,y);
+		delay(5-level);
+		}
+		else
+		if(level==3)
+		{
 		clear(x1,y1);
 		clear(x2,y2);
 		y1++;
@@ -99,6 +169,16 @@ void main()
 		makecar(x2,y2);
 		makecar(x,y);
 		delay(5-level);
+		}
+		else
+		if(level==4)
+		{
+		clear(x1,y1);
+		y1++;
+		makecar(x1,y1);
+		makecar(x,y);
+		delay(5-level);
+		}
 		if(kbhit())
 		{
 			makecar(x,y);
@@ -107,7 +187,7 @@ void main()
 			case 27: exit(0);
 			break;
 			case 75:clear(x,y);
-				if(x>250)
+				if(x>150)
 					x=x-50;
 				makecar(x,y);
 			break;
@@ -131,11 +211,11 @@ void main()
 	     cout<<"GAME OVER ";
 	     break;
 	     }
-	    gotoxy(5,5);
-	    cout<<"You have lost 1 life";
+	    gotoxy(2,5);
+	    cout<<"Lost 1 life";
 	    delay(3000);
-	    gotoxy(5,5);
-	    cout<<"                    ";
+	    gotoxy(2,5);
+	    cout<<"           ";
 	    }
   }
   }

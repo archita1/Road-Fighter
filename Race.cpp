@@ -46,23 +46,24 @@ void main()
   rectangle(0,200,120,250);
   gotoxy(2,15);
   cout<<"<Esc> -> Exit";
+  for(level=1;(level<=5)&&(life>0);level++)
   {
 	if(level==1){
 	  gotoxy(2,5);
 	  cout<<"Starts Now";
 	  gotoxy(2,7);
 	  cout<<"All the best";
-	  delay(5000);
+	  delay(1000);
 	  gotoxy(2,5);
 	  cout<<"          ";
 	  gotoxy(2,7);
 	  cout<<"            ";
 	  }
 	 else {
-	     gotoxy(5,5);
+	     gotoxy(2,5);
 	     cout<<"Next level.";
-	     delay(5000);
-	     gotoxy(5,5);
+	     delay(1000);
+	     gotoxy(2,5);
 	     cout<<"           ";
 	     }
   for(int i=0;(i<15)&&(life>0);i++) {
@@ -78,11 +79,13 @@ void main()
 		exit(0);
 	   }
 	setcolor(RED);
-
-	rectangle(420,250,600,300);
+	rectangle(420,125,550,175);
+	gotoxy(55,10);
+	cout<<"Level = "<<level;
+	rectangle(420,250,550,300);
 	gotoxy(55,18);
 	cout<<"Lives = "<<life;
-	rectangle(420,350,600,400);
+	rectangle(420,350,550,400);
 	gotoxy(55,24);
 	cout<<"Score = "<<score;
 	int accident=0;

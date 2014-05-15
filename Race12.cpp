@@ -46,7 +46,7 @@ void main()
   rectangle(0,200,120,250);
   gotoxy(2,15);
   cout<<"<Esc> -> Exit";
-  for(level=1;(level<=5)&&(life>0);level++)
+  for(level=1;(level<=4)&&(life>0);level++)
   {
 	if(level==1){
 	  gotoxy(2,5);
@@ -58,20 +58,53 @@ void main()
 	  cout<<"          ";
 	  gotoxy(2,7);
 	  cout<<"            ";
+	  rectangle(150,0,401,getmaxy());
+	  setfillstyle(SOLID_FILL,8);
+	  floodfill(325,getmaxy()/2,RED);
+      setcolor(RED);
 	  }
-	 else {
+	 else
+	 if(level==2){
 	     gotoxy(2,5);
-	     cout<<"Next level.";
+	     cout<<"Level 2.";
 	     delay(1000);
 	     gotoxy(2,5);
 	     cout<<"           ";
+		 rectangle(200,0,401,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(325,getmaxy()/2,RED);
+         setcolor(RED);
 	     }
-  for(int i=0;(i<15)&&(life>0);i++) {
-	if((level==5)&&(i==14)){
-	   gotoxy(5,5);
+	 else
+	 if(level==3){
+	     gotoxy(2,5);
+	     cout<<"Level 3.";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+		 rectangle(200,0,401,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(325,getmaxy()/2,RED);
+         setcolor(RED);
+	     }
+     else
+	 if(level==4){
+	     gotoxy(2,5);
+	     cout<<"Level 4.";
+	     delay(1000);
+	     gotoxy(2,5);
+	     cout<<"           ";
+		 rectangle(200,0,401,getmaxy());
+		 setfillstyle(SOLID_FILL,8);
+		 floodfill(325,getmaxy()/2,RED);
+         setcolor(RED);
+	     }		
+  for(int i=0;(i<3)&&(life>0);i++) {
+	if((level==4)&&(i==14)){
+	   gotoxy(2,5);
 	   cout<<"You have won";
-	   gotoxy(5,6);
-	   cout<<"Wanna continue <y/n>";
+	   gotoxy(2,6);
+	   cout<<"Continue <y/n>";
 	   cin>>choice;
 	   if ((choice=='y')||(choice=='Y'))
 		main();
@@ -96,6 +129,8 @@ void main()
 	score += 10;
 	while(y1<getmaxy()-1)
 	{
+		if(level==1)
+		{
 		clear(x1,y1);
 		clear(x2,y2);
 		clear(x3,y3);
@@ -110,6 +145,43 @@ void main()
 		makecar(x4,y4);
 		makecar(x,y);
 		delay(5-level);
+		}
+		else 
+		if(level==2)
+		{
+		clear(x1,y1);
+		clear(x2,y2);
+		clear(x3,y3);
+		y1++;
+		y2++;
+		y3++;
+		makecar(x1,y1);
+		makecar(x2,y2);
+		makecar(x3,y3);
+		makecar(x,y);
+		delay(5-level);
+		}
+		else
+		if(level==3)
+		{
+		clear(x1,y1);
+		clear(x2,y2);
+		y1++;
+		y2++;
+		makecar(x1,y1);
+		makecar(x2,y2);
+		makecar(x,y);
+		delay(5-level);
+		}
+		else
+		if(level==4)
+		{
+		clear(x1,y1);
+		y1++;
+		makecar(x1,y1);
+		makecar(x,y);
+		delay(5-level);
+		}
 		if(kbhit())
 		{
 			makecar(x,y);
